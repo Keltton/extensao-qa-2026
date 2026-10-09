@@ -1,6 +1,9 @@
 🧪 Testes-Manuais
 
-Repositório dedicado ao estudo, prática e documentação de testes manuais de software, com foco em:
+Keltton Felipe Alves Silveira 
+
+
+Repositório forkado do Professor Adnys
 
 Aprendizado de QA
 Organização de casos de teste
