@@ -40,7 +40,7 @@
 | **Passos** |
 | :--------- |
 | **DADO** que o usuário clica em "Adicionar" no grupo Peitoral |
-| **E** preenche o Nome "testea" |
+| **E** preenche o Nome com um nome de teste |
 | **QUANDO** clicar em "Salvar" |
 | **ENTÃO** o exercício deve aparecer no grupo Peitoral e o total deve aumentar |
 
@@ -50,7 +50,7 @@
 
 | **Resultado** | **Resultado obtido** | **Evidência** | **Bug** |
 | :-----------: | :------------------- | :-----------: | :-----: |
-| ✅ Passou | Exercício listado em Peitoral | [Vídeo Jam](https://jam.dev/c/35d0b2b5-9ac2-4c7a-a63f-a172aeaaa7dc) | - |
+| ✅ Passou | Exercício listado em Peitoral e total atualizado. | [Vídeo Jam](https://jam.dev/c/35d0b2b5-9ac2-4c7a-a63f-a172aeaaa7dc) | - |
 
 ---
 
@@ -62,11 +62,11 @@
 
 | **Pré-condições** |
 | :---------------- |
-| Exercício "QA Keltton Supino Reto" já cadastrado (C04-CT02). |
+| Exercício de teste já cadastrado (C04-CT02). |
 
 | **Passos** |
 | :--------- |
-| **DADO** que já existe "QA Keltton Supino Reto" no grupo Peitoral |
+| **DADO** que já existe o exercício de teste no grupo Peitoral |
 | **E** o usuário adiciona outro exercício com o mesmo nome no mesmo grupo |
 | **QUANDO** clicar em "Salvar" |
 | **ENTÃO** deve ser exibido aviso de exercício já cadastrado |
@@ -94,16 +94,16 @@
 | **Passos** |
 | :--------- |
 | **DADO** que o grupo Peitoral tem o exercício |
-| **E** o usuário clica no "X" (Deletar) de um deles |
+| **E** o usuário clica no "X" (Deletar) do exercício de teste |
 | **QUANDO** confirmar a exclusão |
 | **ENTÃO** o exercício deve ser removido e o total atualizado |
 
 | **Critérios de aceitação** |
 | :------------------------- |
-| Exercício removido e Total = 0 |
+| Exercício removido e total do grupo atualizado. |
 
 | **Resultado** | **Resultado obtido** | **Evidência** | **Bug** |
 | :-----------: | :------------------- | :-----------: | :-----: |
-| ✅ Passou | Exercício removido. | [Vídeo Jam](https://jam.dev/c/77fa5e4f-a14b-41ce-9c31-e1515abaecc1) | - |
+| ✅ Passou | Exercício removido e total atualizado. | [Vídeo Jam](https://jam.dev/c/77fa5e4f-a14b-41ce-9c31-e1515abaecc1) | - |
 
 ---

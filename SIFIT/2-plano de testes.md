@@ -7,7 +7,7 @@
 * **Ambiente de Testes**: [https://sifit.centrion.com.br](https://sifit.centrion.com.br)
 * **Banco de dados**: MySQL (acesso de leitura via MySQL Workbench)
 * **Tipo de Teste**: Teste Funcional Manual
-* **Data do Documento**: 19/10/2026
+* **Data do Documento**: 23/10/2026
 * **Responsável**: Keltton
 
 ---
@@ -22,12 +22,18 @@ Verificar manualmente os requisitos funcionais centrais do SIFIT (autenticação
 
 **Incluído:** RF01 a RF08 (ver Análise de Requisitos).
 
+**Excluído:**
+
+* Demais módulos do menu (listados na Análise de Requisitos)
+* Integração real com o gateway Pagar.me (nenhuma cobrança foi gerada)
+* Testes em dispositivos móveis, de performance, carga e segurança
+
 ---
 
 ### 🔧 4. **Ferramentas Utilizadas**
 
-* Navegador Google Chrome / Chromium
-* Tools4dev (console e inspeção de elementos)
+* Navegador Google Chrome
+* DevTools do Chrome – F12 (console e inspeção de elementos)
 * Jam.dev (gravação das evidências em vídeo)
 * MySQL Workbench (consulta ao banco)
 * GitHub (documentação em Markdown)
@@ -67,10 +73,10 @@ Verificar manualmente os requisitos funcionais centrais do SIFIT (autenticação
 | --------------------------- | ----------- | ---------- |
 | Levantamento de requisitos  | 17/10/2026  | 22/10/2026 |
 | Planejamento de Testes      | 22/10/2026  | 23/10/2026 |
-| Criação dos Casos de Teste  | 23/10/2026  |     -      |
-| Execução dos Testes Manuais | 23/10/2026  |     -      |
-| Registro de Bugs            | 23/10/2026  |     -      |
-| Gravação das evidências     | 23/10/2026  |     -      |
+| Criação dos Casos de Teste  | 23/10/2026  | 23/10/2026 |
+| Execução dos Testes Manuais | 23/10/2026  | 24/10/2026 |
+| Registro de Bugs            | 23/10/2026  | 24/10/2026 |
+| Gravação das evidências     | 23/10/2026  | 24/10/2026 |
 
 
 ---
@@ -102,6 +108,11 @@ Verificar manualmente os requisitos funcionais centrais do SIFIT (autenticação
 
 | Risco | Impacto | Mitigação |
 | ----- | ------- | --------- |
+| Ambiente compartilhado com a turma (dados alterados por terceiros) | Alto | Usar dados de teste identificáveis e não depender de IDs fixos na documentação |
+| Gerar cobrança real pelo Pagar.me | Alto | Não usar "Salvar também na Pagar.me"; manter "Pag. Via Sistema" = Não |
+| Dados pessoais reais na base | Alto | Não publicar prints com nome ou CPF de terceiros (LGPD) |
+| Banco de dados somente leitura | Médio | Validações no banco feitas apenas com SELECT |
+| Sistema fora do ar | Médio | Repetir a execução depois |
 
 ---
 
@@ -109,7 +120,13 @@ Verificar manualmente os requisitos funcionais centrais do SIFIT (autenticação
 
 | Tipo | Identificação |
 | ---- | ------------- |
-| Cliente | #414 "Keltton Felipe" |
-| Exercício | "teste" (grupo Peitoral) |
+| Cliente | Cliente de teste (cadastrado em C03-CT02 e editado em C03-CT03) |
+| Exercício | Exercício de teste no grupo Peitoral (C04-CT02) |
+| Plano | Plano de teste (C05-CT04) |
+| Matrícula | Matrícula do cliente de teste no plano de teste (C06-CT02) |
+| Conta a receber | Parcela gerada pela matrícula (C07-CT01) |
+| Check-in | Check-in do cliente de teste (C08-CT03) |
+
+> Os códigos e nomes dos registros não são fixados neste documento porque o ambiente é compartilhado e os dados são alterados por outras pessoas.
 
 ---

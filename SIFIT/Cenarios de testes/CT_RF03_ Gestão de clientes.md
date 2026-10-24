@@ -19,11 +19,11 @@
 
 | **Critérios de aceitação** |
 | :------------------------- |
-| Mensagens exibidas em todos os campos obrigatórios. |
+| Cadastro bloqueado enquanto houver campo obrigatório vazio, com mensagem de validação. |
 
 | **Resultado** | **Resultado obtido** | **Evidência** | **Bug** |
 | :-----------: | :------------------- | :-----------: | :-----: |
-| ✅ Sucesso | Tem validação de um campo por vez. | [Vídeo Jam](https://jam.dev/c/f2aad22c-c58f-477c-b89c-ddee7d230606) | - |
+| ✅ Passou | Cadastro bloqueado; a validação é exibida um campo obrigatório por vez. | [Vídeo Jam](https://jam.dev/c/f2aad22c-c58f-477c-b89c-ddee7d230606) | - |
 
 ---
 
@@ -40,8 +40,8 @@
 | **Passos** |
 | :--------- |
 | **DADO** que o usuário acessa "Novo Cliente" |
-| **E** preenche Nome "QA Keltton Obrigatorios", Status "Ativo" e Sexo "Masculino" |
-| **E** preenche Data de Nascimento "01/01/2030" |
+| **E** preenche Nome (nome de teste), Status "Ativo" e Sexo "Masculino" |
+| **E** preenche Data de Nascimento "31/12/2027" |
 | **QUANDO** clicar em "Cadastrar Cliente" |
 | **ENTÃO** o sistema deve rejeitar a data futura |
 
@@ -51,7 +51,7 @@
 
 | **Resultado** | **Resultado obtido** | **Evidência** | **Bug** |
 | :-----------: | :------------------- | :-----------: | :-----: |
-| ❌ Falhou | Cliente #414 cadastrado; a ficha exibe a idade "-4 anos". | [Vídeo Jam](https://jam.dev/c/f3cd80a9-c549-4e43-8957-182eaa983f3d) | BUG-005 |
+| ❌ Falhou | Cliente cadastrado; a ficha exibe a idade "-2 anos". | [Vídeo Jam](https://jam.dev/c/f3cd80a9-c549-4e43-8957-182eaa983f3d) | BUG-005 |
 
 ---
 
@@ -63,12 +63,12 @@
 
 | **Pré-condições** |
 | :---------------- |
-| Cliente #414 cadastrado. |
+| Cliente de teste cadastrado. |
 
 | **Passos** |
 | :--------- |
-| **DADO** que o usuário acessa a ficha do cliente #414 e clica em "Alterar dados" |
-| **E** altera o Nome para "QA Keltton Editado" e a Data de Nascimento para "15/05/2000" |
+| **DADO** que o usuário acessa a ficha do cliente de teste e clica em "Alterar dados" |
+| **E** altera o Nome e a Data de Nascimento para uma data válida (ex.: "15/05/2000") |
 | **QUANDO** clicar em "Salvar Alterações" |
 | **ENTÃO** os dados devem ser gravados |
 
@@ -90,13 +90,13 @@
 
 | **Pré-condições** |
 | :---------------- |
-| Estar logado |
+| Usuário logado. |
 
 | **Passos** |
 | :--------- |
-| **DADO** que o usuário está na edição/cadastro do cliente #414 |
+| **DADO** que o usuário está no cadastro ou na edição de um cliente |
 | **E** preenche o CPF "111.111.111-11" |
-| **QUANDO** clicar em "Salvar" |
+| **QUANDO** clicar em "Cadastrar Cliente" / "Salvar Alterações" |
 | **ENTÃO** o sistema deve exibir "CPF inválido" e não salvar |
 
 | **Critérios de aceitação** |
@@ -105,7 +105,7 @@
 
 | **Resultado** | **Resultado obtido** | **Evidência** | **Bug** |
 | :-----------: | :------------------- | :-----------: | :-----: |
-| ❌ Falhou | CPF 111.111.111-11 salvo sem nenhum aviso. | [Vídeo Jam](https://jam.dev/c/2359f24c-548d-4136-b968-1234c3f2770e) | BUG-006 |
+| ❌ Falhou | CPF 111.111.111-11 salvo sem nenhum aviso. | [Vídeo Jam](https://jam.dev/c/aee4435d-fdbd-4a84-bfe5-d8a28801ecd7) | BUG-006 |
 
 ---
 
@@ -117,14 +117,14 @@
 
 | **Pré-condições** |
 | :---------------- |
-| Cliente "Keltton" cadastrado. |
+| Cliente de teste cadastrado. |
 
 | **Passos** |
 | :--------- |
 | **DADO** que o usuário está em Clientes |
-| **E** digita "Keltton" no filtro Nome |
+| **E** digita o nome do cliente de teste no filtro Nome |
 | **QUANDO** clicar em "Buscar" |
-| **ENTÃO** apenas os clientes com "Keltton" no nome devem ser listados |
+| **ENTÃO** apenas os clientes com esse nome devem ser listados |
 
 | **Critérios de aceitação** |
 | :------------------------- |
@@ -132,7 +132,7 @@
 
 | **Resultado** | **Resultado obtido** | **Evidência** | **Bug** |
 | :-----------: | :------------------- | :-----------: | :-----: |
-| ✅ Passou | Retornou somente o cliente #412. | [Print](../Evidencias/C03-CT05.png) | - |
+| ✅ Passou | Retornou somente os clientes correspondentes ao nome pesquisado. | [Print](../Evidencias/C03-CT05.png) | - |
 
 ---
 
@@ -144,11 +144,11 @@
 
 | **Pré-condições** |
 | :---------------- |
-| Busca por "Keltton" realizada (C03-CT05). |
+| Busca por nome realizada (C03-CT05). |
 
 | **Passos** |
 | :--------- |
-| **DADO** que a busca por "Keltton" retornou 1 cliente |
+| **DADO** que a busca por nome retornou resultados que cabem em uma única página |
 | **QUANDO** o usuário clicar na página "2" da paginação |
 | **ENTÃO** a paginação não deveria oferecer outras páginas, ou a página 2 deveria manter o filtro |
 
@@ -158,7 +158,7 @@
 
 | **Resultado** | **Resultado obtido** | **Evidência** | **Bug** |
 | :-----------: | :------------------- | :-----------: | :-----: |
-| ❌ Falhou | A paginação mostra 3 páginas para 1 resultado; a página 2 lista clientes que não correspondem à busca (ex.: #261 "gabi"). | [Vídeo Jam](https://jam.dev/c/2359f24c-548d-4136-b968-1234c3f2770e) | BUG-007 |
+| ❌ Falhou | A paginação mostra 3 páginas para 1 resultado; a página 2 lista clientes que não correspondem à busca. | [Vídeo Jam](https://jam.dev/c/2359f24c-548d-4136-b968-1234c3f2770e) | BUG-007 |
 
 ---
 
@@ -185,7 +185,7 @@
 
 | **Resultado** | **Resultado obtido** | **Evidência** | **Bug** |
 | :-----------: | :------------------- | :-----------: | :-----: |
-| ❌ Falhou | A lista exibe clientes com status INATIVO (ex.: #397, #393, #392) com o filtro em "Ativo". | [Vídeo Jam](https://jam.dev/c/a6adccf3-ae4c-47f8-9343-8ad793e5758e) | BUG-008 |
+| ❌ Falhou | A lista exibe clientes com status INATIVO com o filtro em "Ativo". | [Vídeo Jam](https://jam.dev/c/a6adccf3-ae4c-47f8-9343-8ad793e5758e) | BUG-008 |
 
 ---
 
@@ -197,11 +197,11 @@
 
 | **Pré-condições** |
 | :---------------- |
-| Cliente #414 cadastrado sem telefone e sem endereço. |
+| Cliente de teste cadastrado sem telefone e sem endereço. |
 
 | **Passos** |
 | :--------- |
-| **DADO** que o usuário acessa Clientes > Visualizar no cliente #414 |
+| **DADO** que o usuário acessa Clientes > Visualizar no cliente de teste |
 | **QUANDO** a ficha for carregada |
 | **ENTÃO** os campos vazios devem aparecer em branco ou com "-", sem dados fictícios |
 

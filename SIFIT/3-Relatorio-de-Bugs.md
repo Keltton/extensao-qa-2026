@@ -4,7 +4,7 @@
 
 **QA responsável:** Keltton
 
-**Data:** 23/10/2026 -
+**Data:** 23/10/2026 a 24/10/2026
 
 ---
 
@@ -31,8 +31,8 @@
 | **Ambiente** |
 | ------------ |
 | URL: https://sifit.centrion.com.br |
-| Usuário: conta de teste fornecida pelo professor  |
-| Navegador: Google Chrome  |
+| Usuário: conta de teste fornecida pelo professor |
+| Navegador: Google Chrome |
 
 | **Funcionalidade Afetada** | **Caso de Teste Relacionado** |
 | :------------------------: | :---------------------------: |
@@ -102,7 +102,7 @@
 | **Ambiente** |
 | ------------ |
 | URL: https://sifit.centrion.com.br |
-| Usuário: conta de teste fornecida pelo professor (credenciais não publicadas) |
+| Usuário: conta de teste fornecida pelo professor |
 | Navegador: Google Chrome |
 
 | **Funcionalidade Afetada** | **Caso de Teste Relacionado** |
@@ -171,7 +171,7 @@
 
 | **Comportamento Esperado** | **Comportamento Obtido** |
 | :------------------------: | :----------------------: |
-| Rejeitar data futura | Cliente #414 salvo; idade "-2 anos" |
+| Rejeitar data futura | Cliente salvo; idade "-2 anos" |
 
 | **Ambiente** |
 | ------------ |
@@ -230,7 +230,7 @@
 
 | **ID** | **Descrição** |
 | ------ | ------------- |
-| BUG-007 | Com 2 resultado na busca por "Keltton", a paginação mostra 3 páginas e a página lista clientes que não correspondem ao filtro. |
+| BUG-007 | Em uma busca por nome cujo resultado cabe em uma única página, a paginação mostra 3 páginas e a página 2 lista clientes que não correspondem ao filtro. |
 
 | **Severidade do Bug** | **Prioridade de Correção** | **Status** |
 | :-------------------: | :------------------------: | :--------: |
@@ -239,12 +239,12 @@
 | **Passo a passo para simular o bug** |
 | ------------------------------------ |
 | 1. Clientes |
-| 2. Filtrar Nome = "Keltton" e Buscar |
+| 2. Filtrar pelo nome do cliente de teste e Buscar |
 | 3. Clicar na página 2 |
 
 | **Comportamento Esperado** | **Comportamento Obtido** |
 | :------------------------: | :----------------------: |
-| Apenas 1 página, ou página 2 respeitando o filtro | 3 páginas; página 2 com clientes não relacionados (ex.: #261 "Keltton") |
+| Apenas 1 página, ou página 2 respeitando o filtro | 3 páginas; página 2 com clientes que não correspondem ao filtro |
 
 | **Ambiente** |
 | ------------ |
@@ -280,7 +280,7 @@
 
 | **Comportamento Esperado** | **Comportamento Obtido** |
 | :------------------------: | :----------------------: |
-| Somente clientes ATIVOS | Clientes INATIVOS listados (ex.: #397, #393, #392) |
+| Somente clientes ATIVOS | Clientes INATIVOS listados |
 
 | **Ambiente** |
 | ------------ |
@@ -322,7 +322,7 @@
 | ------------ |
 | URL: https://sifit.centrion.com.br |
 | Usuário: conta de teste fornecida pelo professor |
-| Navegador: Google Chrome / Chromium |
+| Navegador: Google Chrome |
 
 | **Funcionalidade Afetada** | **Caso de Teste Relacionado** |
 | :------------------------: | :---------------------------: |
@@ -347,7 +347,7 @@
 | **Passo a passo para simular o bug** |
 | ------------------------------------ |
 | 1. Exercícios > Adicionar (Peitoral) |
-| 2. Cadastrar "teste" |
+| 2. Cadastrar um exercício com nome de teste |
 | 3. Repetir o cadastro com o mesmo nome |
 
 | **Comportamento Esperado** | **Comportamento Obtido** |
@@ -367,5 +367,258 @@
 | **Evidência(s)** |
 | :--------------: |
 | [Vídeo Jam](https://jam.dev/c/a84d54b0-8ca9-4871-9a16-5c563024a8f4) |
+
+---
+
+### 🐞 **BUG-011: Cadastro de plano sem Grupo retorna erro 500 genérico**
+
+| **ID** | **Descrição** |
+| ------ | ------------- |
+| BUG-011 | O campo Grupo não tem opção selecionada nem indicação de obrigatório; ao salvar, o servidor responde HTTP 500 e a tela mostra apenas "Erro ao salvar plano". |
+
+| **Severidade do Bug** | **Prioridade de Correção** | **Status** |
+| :-------------------: | :------------------------: | :--------: |
+| Média | Alta | Aberto |
+
+| **Passo a passo para simular o bug** |
+| ------------------------------------ |
+| 1. Planos > Novo Plano |
+| 2. Preencher Nome, Parcelas, Valor Mensal e Valor Matrícula |
+| 3. Não selecionar o Grupo |
+| 4. Clicar em "Salvar Plano" |
+
+| **Comportamento Esperado** | **Comportamento Obtido** |
+| :------------------------: | :----------------------: |
+| Grupo sinalizado como obrigatório, com mensagem indicando o campo | "Erro ao salvar plano" (HTTP 500 no console) |
+
+| **Ambiente** |
+| ------------ |
+| URL: https://sifit.centrion.com.br |
+| Usuário: conta de teste fornecida pelo professor |
+| Navegador: Google Chrome |
+
+| **Funcionalidade Afetada** | **Caso de Teste Relacionado** |
+| :------------------------: | :---------------------------: |
+| Planos | C05-CT03 |
+
+| **Evidência(s)** |
+| :--------------: |
+| [Vídeo Jam](https://jam.dev/c/e906f237-50f5-4b44-a6fc-bcf29f187904) |
+
+---
+
+### 🐞 **BUG-012: Campo Data do modal de parcelas aceita data inválida**
+
+| **ID** | **Descrição** |
+| ------ | ------------- |
+| BUG-012 | No modal "Quantidade Parcelas" da matrícula, o campo Data aceita o valor "2026/05/192", que não é uma data válida. |
+
+| **Severidade do Bug** | **Prioridade de Correção** | **Status** |
+| :-------------------: | :------------------------: | :--------: |
+| Média | Média | Aberto |
+
+| **Passo a passo para simular o bug** |
+| ------------------------------------ |
+| 1. Matrículas > Cadastrar Matrícula |
+| 2. Selecionar cliente e plano |
+| 3. Clicar em "Salvar" |
+| 4. No modal "Quantidade Parcelas", informar "2026/05/192" no campo Data |
+
+| **Comportamento Esperado** | **Comportamento Obtido** |
+| :------------------------: | :----------------------: |
+| Rejeitar a data inválida | Data inválida aceita |
+
+| **Ambiente** |
+| ------------ |
+| URL: https://sifit.centrion.com.br |
+| Usuário: conta de teste fornecida pelo professor |
+| Navegador: Google Chrome |
+
+| **Funcionalidade Afetada** | **Caso de Teste Relacionado** |
+| :------------------------: | :---------------------------: |
+| Matrículas | C06-CT03 |
+
+| **Evidência(s)** |
+| :--------------: |
+| [Vídeo Jam](https://jam.dev/c/02ee32cf-7b68-4011-9cd9-d0faaba8470e) |
+
+---
+
+### 🐞 **BUG-013: Nova matrícula permite selecionar plano inativo**
+
+| **ID** | **Descrição** |
+| ------ | ------------- |
+| BUG-013 | O campo Modalidade da matrícula lista todos os planos, inclusive os com status INATIVO. |
+
+| **Severidade do Bug** | **Prioridade de Correção** | **Status** |
+| :-------------------: | :------------------------: | :--------: |
+| Alta | Alta | Aberto |
+
+| **Passo a passo para simular o bug** |
+| ------------------------------------ |
+| 1. Matrículas > Cadastrar Matrícula |
+| 2. Abrir o campo Modalidade |
+| 3. Comparar com a tela Planos filtrada por status Inativo |
+
+| **Comportamento Esperado** | **Comportamento Obtido** |
+| :------------------------: | :----------------------: |
+| Apenas planos ativos disponíveis | Planos inativos disponíveis para seleção |
+
+| **Ambiente** |
+| ------------ |
+| URL: https://sifit.centrion.com.br |
+| Usuário: conta de teste fornecida pelo professor |
+| Navegador: Google Chrome |
+
+| **Funcionalidade Afetada** | **Caso de Teste Relacionado** |
+| :------------------------: | :---------------------------: |
+| Matrículas | C06-CT04 |
+
+| **Evidência(s)** |
+| :--------------: |
+| [Vídeo Jam](https://jam.dev/c/867affda-2ef5-42f4-ac2e-c69d4a7cd2df) |
+
+---
+
+### 🐞 **BUG-014: Cards de Contas a Receber não refletem as contas pendentes**
+
+| **ID** | **Descrição** |
+| ------ | ------------- |
+| BUG-014 | Os cards "Pendentes no Mês" e "Previsto para o Mês" não consideram as contas pendentes existentes no mês filtrado. |
+
+| **Severidade do Bug** | **Prioridade de Correção** | **Status** |
+| :-------------------: | :------------------------: | :--------: |
+| Média | Alta | Aberto |
+
+| **Passo a passo para simular o bug** |
+| ------------------------------------ |
+| 1. Ter contas pendentes no mês |
+| 2. Acessar Contas a Receber |
+| 3. Comparar os cards com a lista filtrada por status Pendente |
+
+| **Comportamento Esperado** | **Comportamento Obtido** |
+| :------------------------: | :----------------------: |
+| Cards coerentes com as contas pendentes do mês | Cards não incluem as contas pendentes |
+
+| **Ambiente** |
+| ------------ |
+| URL: https://sifit.centrion.com.br |
+| Usuário: conta de teste fornecida pelo professor |
+| Navegador: Google Chrome |
+
+| **Funcionalidade Afetada** | **Caso de Teste Relacionado** |
+| :------------------------: | :---------------------------: |
+| Contas a Receber | C07-CT04 |
+
+| **Evidência(s)** |
+| :--------------: |
+| [Vídeo Jam](https://jam.dev/c/d2060185-943a-429b-bb7f-786c1bcd6119) |
+
+---
+
+### 🐞 **BUG-015: Check-in com código vazio não exibe aviso**
+
+| **ID** | **Descrição** |
+| ------ | ------------- |
+| BUG-015 | Ao clicar em "Realizar check-in" sem informar o código, a tela não apresenta nenhuma mensagem ou reação. |
+
+| **Severidade do Bug** | **Prioridade de Correção** | **Status** |
+| :-------------------: | :------------------------: | :--------: |
+| Baixa | Baixa | Aberto |
+
+| **Passo a passo para simular o bug** |
+| ------------------------------------ |
+| 1. Acessar Check-in |
+| 2. Deixar "Código do cliente" vazio |
+| 3. Clicar em "Realizar check-in" |
+
+| **Comportamento Esperado** | **Comportamento Obtido** |
+| :------------------------: | :----------------------: |
+| Aviso para informar o código | Nenhuma reação da tela |
+
+| **Ambiente** |
+| ------------ |
+| URL: https://sifit.centrion.com.br |
+| Usuário: conta de teste fornecida pelo professor |
+| Navegador: Google Chrome |
+
+| **Funcionalidade Afetada** | **Caso de Teste Relacionado** |
+| :------------------------: | :---------------------------: |
+| Check-in | C08-CT01 |
+
+| **Evidência(s)** |
+| :--------------: |
+| [Vídeo Jam](https://jam.dev/c/569cdd92-c448-4afe-bcc1-cd034d787e0a) |
+
+---
+
+### 🐞 **BUG-016: Horário do check-in registrado 3 horas à frente do horário local**
+
+| **ID** | **Descrição** |
+| ------ | ------------- |
+| BUG-016 | O horário gravado na coluna Entrada fica 3 horas à frente do relógio exibido no próprio sistema (aparenta usar UTC em vez de America/Sao_Paulo). |
+
+| **Severidade do Bug** | **Prioridade de Correção** | **Status** |
+| :-------------------: | :------------------------: | :--------: |
+| Média | Alta | Aberto |
+
+| **Passo a passo para simular o bug** |
+| ------------------------------------ |
+| 1. Acessar Check-in e anotar o horário exibido no topo |
+| 2. Realizar check-in de um cliente com matrícula ativa |
+| 3. Comparar com a coluna Entrada |
+
+| **Comportamento Esperado** | **Comportamento Obtido** |
+| :------------------------: | :----------------------: |
+| Entrada 13:54 (horário local) | Entrada 16:54 (+3 h) |
+
+| **Ambiente** |
+| ------------ |
+| URL: https://sifit.centrion.com.br |
+| Usuário: conta de teste fornecida pelo professor |
+| Navegador: Google Chrome |
+
+| **Funcionalidade Afetada** | **Caso de Teste Relacionado** |
+| :------------------------: | :---------------------------: |
+| Check-in | C08-CT04 |
+
+| **Evidência(s)** |
+| :--------------: |
+| [Vídeo Jam](https://jam.dev/c/26554c0c-5651-4795-968e-f46eb3ccf1ea) |
+
+---
+
+### 🐞 **BUG-017: Cliente com entrada registrada continua "Pendente" e fora de "Presentes agora"**
+
+| **ID** | **Descrição** |
+| ------ | ------------- |
+| BUG-017 | Após o check-in, a linha mostra o horário de entrada, mas o status é "Pendente" com o botão "Registrar entrada", e o card "Presentes agora" fica em 0. |
+
+| **Severidade do Bug** | **Prioridade de Correção** | **Status** |
+| :-------------------: | :------------------------: | :--------: |
+| Média | Média | Aberto |
+
+| **Passo a passo para simular o bug** |
+| ------------------------------------ |
+| 1. Realizar check-in de um cliente com matrícula ativa |
+| 2. Observar o Status na lista e o card "Presentes agora" |
+
+| **Comportamento Esperado** | **Comportamento Obtido** |
+| :------------------------: | :----------------------: |
+| Cliente marcado como presente e "Presentes agora" = 1 | Status "Pendente"; "Presentes agora" = 0 |
+
+| **Ambiente** |
+| ------------ |
+| URL: https://sifit.centrion.com.br |
+| Usuário: conta de teste fornecida pelo professor |
+| Navegador: Google Chrome |
+
+| **Funcionalidade Afetada** | **Caso de Teste Relacionado** |
+| :------------------------: | :---------------------------: |
+| Check-in | C08-CT05 |
+
+| **Evidência(s)** |
+| :--------------: |
+| [Print](Evidencias/C08-CT03.png) |
 
 ---

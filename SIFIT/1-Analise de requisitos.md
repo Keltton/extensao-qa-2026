@@ -1,6 +1,6 @@
 ## 📦 **Requisitos Funcionais – SIFIT (para testes manuais)**
 
-Levantamento feito por navegação no sistema em 17/10/2026-22/10/2026. Foi selecionado do sistema SIFT os 8 módulos Centrais da sua operação (fluxo cliente → plano → matrícula → financeiro → presença).
+Levantamento feito por navegação no sistema entre 17/10/2026 e 22/10/2026. Foram selecionados os 8 módulos centrais da operação do SIFIT (fluxo cliente → plano → matrícula → financeiro → presença).
 
 ---
 
@@ -109,3 +109,9 @@ Levantamento feito por navegação no sistema em 17/10/2026-22/10/2026. Foi sele
   * Lista do dia com plano, horário de entrada/saída e status
   * Cards: check-ins hoje, presentes agora, meta do dia, média diária, taxa de frequência
   * Gráfico de pico de movimento
+
+---
+
+### 🚫 **Fora do escopo desta rodada**
+
+Demais telas do menu (Dashboard, Presenças, SifitBox, Avaliações, Contas a Pagar, Ficha de Treino, Turmas, Caixas, Pagar.me, Relatórios, Colaboradores, Produtos, Anamnese, Configurações, entre outras).
