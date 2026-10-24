@@ -1,6 +1,6 @@
 ## 📦 **Requisitos Funcionais – SIFIT (para testes manuais)**
 
-Levantamento feito por navegação no sistema em 19/10/2026-22/10/2026. Foi selecionado do sistema SIFT os 8 módulos Centrais da sua operação (fluxo cliente → plano → matrícula → financeiro → presença).
+Levantamento feito por navegação no sistema em 17/10/2026-22/10/2026. Foi selecionado do sistema SIFT os 8 módulos Centrais da sua operação (fluxo cliente → plano → matrícula → financeiro → presença).
 
 ---
 
